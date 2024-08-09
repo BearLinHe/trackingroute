@@ -1,0 +1,292 @@
+.nv_center{
+       margin: 20px auto;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #73db19;
+      height: 1500px;
+      width: 80%;
+
+}
+
+.center_left{
+      margin-top: 20px ;
+        margin-left: 20px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #73db19;
+      height: 1400px;
+      width: 20%;
+    float: left;
+
+}
+
+.center_right{
+      margin-top: 20px ;
+     margin-left: 5px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1946;
+      height: 1400px;
+      width: 75%;
+    float: left;
+
+}
+
+
+.center_toop{
+       margin-top: 1px ;
+       margin-left: 55px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #2cdb19;
+      height: 40px;
+       width: 94%;
+}
+
+#center_left{	background-color:#eee; width:600px; height:40px; margin:0 auto;}
+ul{ list-style:none; }
+ul li{ float:left; font-size: 20px;  line-height:30px; text-align:center; margin-bottom:25px; position:relative;}
+a{   text-decoration:none; color:#997e7e; display:block; padding:0 10px;}
+a:hover{ color:#eee; background-color: #9c9494;}
+ul li ul li{ float:none; background-color:#eee; margin-top:2px;}
+ul li ul{ position:absolute; left:0px; top:40px; display:none;}
+ul li ul li a:hover{ background-color:#06f;}
+ul li:hover ul{ display:block;}
+
+.nove_xinfo{
+      margin-top: 5px ;
+      margin-left: 5px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1974;
+       height: 200px;
+       width: 330px;
+      float: left;
+
+}
+.xinfo_left{
+     margin-top: 5px ;
+      margin-left: 10px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #191cdb;
+       height: 150px;
+       width: 100px;
+      float: left;
+}
+.xinfo_img{
+       margin-top: 2px ;
+      margin-left: 2px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #19db2c;
+       height: 115px;
+       width: 90px;
+      /*float: left;*/
+}
+.xinfo_fbrq{
+       margin-top: 2px ;
+      margin-left: 2px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1940;
+       height: 20px;
+       width: 90px;
+      /*float: left;*/
+}
+
+/*销售右面信息*/
+.nv_info{
+      margin-top: 5px ;
+      margin-left: 5px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db19ab;
+       height: 150px;
+       width: 200px;
+      float: left;
+
+}
+.info_title{
+      margin-top: 2px ;
+      margin-left: 2px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #4ddb19;
+       height: 25px;
+       width: 190px;
+
+}
+
+.info_ydxx{
+      margin-top: 2px ;
+      margin-left: 2px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #4ddb19;
+       height: 80px;
+       width: 190px;
+
+}
+/*是否完结*/
+.ydxx_wj{
+      margin-top: 2px ;
+      margin-left: 5px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #192cdb;
+       height: 35px;
+       width: 85px;
+    float: left;
+
+}
+/*总完结*/
+.ydxx_zj{
+    margin-top: 2px ;
+      margin-left: 5px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #f59fb3;
+       height: 35px;
+       width: 85px;
+       float: left;
+}
+
+.ydxx_xzcs {
+    margin-top: 2px ;
+      margin-left: 5px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #c20a34;
+    height: 30px;
+    width: 85px;
+     float: left;
+}
+.ydxx_gmcs {
+    margin-top: 2px ;
+      margin-left: 5px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #c20a34;
+    height: 30px;
+    width: 85px;
+    float: left;
+
+}
+.inro_bottm{
+      margin-top: 2px ;
+      margin-left: 2px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #4ddb19;
+       height: 25px;
+       width: 190px;
+
+}
+.bottm_zzxx{
+    margin-top: 0px ;
+      margin-left: 2px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1950;
+       height: 20px;
+       width: 88px;
+    float: left;
+
+}
+.bottm_type{
+     margin-top: 0px ;
+      margin-left: 2px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1950;
+       height: 20px;
+       width: 88px;
+    float: left;
+
+}
+.xinfo_yued{
+      margin-top: 165px ;
+      margin-left: 10px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1950;
+       height: 30px;
+       width: 310px;
+}
+
+.yued_ydxs{
+   margin-top: 1px ;
+      margin-left: 2px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1950;
+       height: 25px;
+       width: 100px;
+       float: left;
+
+}
+.yued_goumai{
+   margin-top: 1px ;
+      margin-left: 2px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #191cdb;
+       height: 25px;
+       width: 100px;
+       float: left;
+
+}
+.yued_info{
+       margin-top: 1px ;
+      margin-left: 2px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #191cdb;
+       height: 25px;
+       width: 85px;
+       float: left;
+
+}
+
+.page{
+     margin-top: 1320px ;
+      margin-left: 55px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1936;
+       height: 25px;
+       width: 1000px;
+
+}
+
+.goodman{
+
+            margin-top: 0px;
+             text-align: center;
+            font-size: 18px;
+            background-image: linear-gradient(to right, red, orange, yellow, green, yellow, orange, red, orange, yellow, green, yellow, orange, red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-size: 200% 100%;
+            animation: bgp 5s infinite linear;
+        }
+        @-webkit-keyframes bgp {
+            0%  { background-position: 0 0;}
+            100% { background-position: -100% 0;}
+        }
+.goodman_hy{
+
+            margin-top: 0px;
+             text-align: center;
+            font-size: 18px;
+            background-image: linear-gradient(to right, #e8dede, #cec7b9, #9c9c85, #7a937a, yellow, orange, red, orange, yellow, green, yellow, orange, red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-size: 200% 100%;
+            animation: bgp 5s infinite linear;
+        }
+        @-webkit-keyframes bgp {
+            0%  { background-position: 0 0;}
+            100% { background-position: -100% 0;}
+        }

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>物流路线修改</title>
+    {% load static %}
+     <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}" tppabs="{% static 'layui/css/layui.css' %}"  media="all">
+
+{#     <script type="text/javascript" src="{% static 'layui/layui.js'%}"></script>#}
+</head>
+<body>
+
+
+
+
+<div class="layui-row">
+  <div class="layui-col-md3">
+    <!-- 树形菜单 -->
+    <div id="tree"></div>
+  </div>
+  <div class="layui-col-md9">
+    <!-- 表格 -->
+      <div class="layui-card">
+         <div class="layui-card-body">
+            <div class="layui-form toolbar">
+                  <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label w-auto">搜索：</label>
+                            <div class="layui-input-inline mr0">
+                                    <input id="loadSearch"  name="loadSearch" class="layui-input" autocomplete="off" type="text" placeholder="Load#"/>
+
+                                </div>
+                             <div class="layui-input-inline mr0">
+                                    <input id="MCSearch" name="MCSearch" class="layui-input" autocomplete="off" type="text" placeholder="MC#"/>
+
+                                </div>
+                        </div>
+                        <div class="layui-inline" >
+                                <button class="layui-btn icon-btn" id="btnSearchByCode"  lay-event="getCheckData"  onclick="doSearch()">
+                                    <i class="layui-icon">&#xe615;</i>query
+                                </button>
+                            </div>
+
+
+                  </div>
+            </div>
+         </div>
+
+      </div>
+       <table class="layui-table" id="table1" lay-filter="table1"></table>
+{#        <table class="layui-table" id="table2"></table>#}
+        <table id="rtTable"  class="layui-table"   lay-filter="rtTable"></table>
+  </div>
+</div>
+<script type="text/html" id="barDemo">
+     <a class="layui-btn layui-btn-xs" lay-event="add">增加</a>
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+      <a class="layui-btn layui-btn-xs" lay-event="modify">修改</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+ <script type="text/javascript" src="{% static 'layui/layui.js'%}"></script>
+<script type="text/javascript" src="{% static 'js/wlgjxg.js'%}">
+</script>
+
+
+<div class="layui-row" id="popUpdateTest" style="display:none;">
+    <div class="layui-col-md10">
+        <form class="layui-form layui-from-pane" action="" style="margin-top:20px" >
+            <div class="layui-form-item">
+
+                <div class="layui-input-block">
+                    <input type="text" name="IdCode"   id="IdCode" required  lay-verify="required" autocomplete="off" placeholder="唯一码" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">eqptIdCode</label>
+                <div class="layui-input-block">
+                    <input type="text" name="neweqptIdCode"  id="neweqptIdCode" required  lay-verify="required" autocomplete="off" placeholder="yyyy-MM-dd HH:mm:ss" class="layui-input">
+
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">eqptName</label>
+                <div class="layui-input-block">
+                    <input type="text" name="neweqptName"  id="neweqptName" required  lay-verify="required" autocomplete="off" placeholder="终点地址" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="margin-top:40px">
+                <div class="layui-input-block">
+                    <button class="layui-btn  layui-btn-submit " lay-submit="" lay-filter="demo11">确认修改</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+layui.use('laydate', function() {
+        var laydate = layui.laydate;
+          //日期时间选择器
+  laydate.render({
+    elem: '#neweqptIdCode'
+    ,type: 'datetime'
+  });
+    }
+    )
+</script>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/regsvr.css' %}">
+{#    <script type="text/javascript" src="{% static 'js/check.js' %}"></script>#}
+
+</head>
+<body>
+<div>
+<form action="/regsvr/regsvr/" method="post">
+        {% csrf_token %}
+    <table>
+        <th colspan="2">新用户注册</th>
+          <tr><td><span>手机号码(*)</span></td><td><input type="text" name="mobile" /></td></tr>
+        <tr><td><span>用户名(*)</span></td><td><input type="text" id="username" value="{{nsername }}" name="username" /></td></tr>
+        <tr><td><span>密码(*)</span></td><td><input type="password" id="password" value="{{password }}" name="password" /></td></tr>
+        <tr><td><span>确认密码(*)</span></td><td><input type="password" id="compassword" value="{{password }}"  name="compassword" /></td></tr>
+        <tr><td><span>email(*)</span></td><td><input type="text"  id="email"  value="{{email }}" name="email" /></td></tr>
+        <tr><td>性别</td><td><input type="radio" id="gender" name="is_gender" checked />男<input type="radio" id="gender" name="is_gender" />女</td></tr>
+         <tr><td>用户权限</td><td><input type="radio" id="yhqx" name="is_yhqx" checked />管理员<input type="radio" id="yhqx" name="is_yhqx" />普通用户</td></tr>
+
+
+        <tr><td>用户的QQ号码</td><td><input type="text" value="{{qq }}" name="qq" /></td></tr>
+        <tr><td>用户的微信号码</td><td><input type="text"  value="{{wechat }}"  name="wechat" /></td></tr>
+        <tr><td colspan="1"><input type="submit" name="subm"  value="立即注册"  /></td>   <td style="text-align: right">  <a href="{% url 'index' %} " class="aButton">返回首页</a>    </td></tr>
+
+        <tr><td style="color: #ec1414;text-align: left" colspan="2">{{ info }}</td></tr>
+
+    </table>
+
+</form>
+</div>
+
+</body>
+</html>

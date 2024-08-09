@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* 使body至少占据视口的100%高度 */
+}
+/* 假设你的表格class为 .my-table */
+.my-table {
+  background-color: #9e1313; /* 更改表格背景色 */
+  color: #333; /* 更改文字颜色 */
+}
+
+/* 为了改变交替行的背景色，可以添加如下样式 */
+.my-table tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.my-table tr:nth-child(even) {
+  background-color: #fdfdfd;
+}
+
+/* 如果你想要改变hover状态下的背景色，可以添加如下样式 */
+.my-table tr:hover {
+  background-color: #ba0909;
+}
+
+/*!* 改变表格背景颜色 *!*/
+/*#table2 .layui-table-body tr.layui-table-hover {*/
+/*  background-color: #af1371; !* 鼠标悬浮时的背景色 *!*/
+/*}*/
+
+/*#table2 .layui-table-body tr {*/
+/*  background-color: #fff; !* 行的背景色 *!*/
+/*}*/
+
+/*!* 改变表头颜色 *!*/
+/*#table2 .layui-table-box {*/
+/*  border-bottom: 1px solid #ddd; !* 表头下边框颜色 *!*/
+/*}*/
+
+/*#table2 .layui-table-header th {*/
+/*  color: #333; !* 表头字体颜色 *!*/
+/*  background-color: #e6e6e6; !* 表头背景色 *!*/
+/*}*/
+
+/*!* 改变strip行的颜色 *!*/
+/*#table1 .layui-table-box .layui-table-strip {*/
+/*  background-color: #fafafa; !* strip行的背景色 *!*/
+/*}*/

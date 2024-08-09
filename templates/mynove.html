@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+     <link rel="stylesheet" type="text/css" href="{% static 'css/mynove.css' %}">
+{% endblock %}
+{% block body %}
+      <div class="info_center">
+       <div class="info_top">
+               <div class="nove_title">
+                          <p style="font-weight: bolder;font-size:25px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 40px " href="#">   {{ gyxs }}</p>
+
+               </div>
+
+       </div>
+       <div class="search_info">
+          <form style="margin-left: 150px" action="/purchase/mynove/1" method="post">
+          {% csrf_token %}
+             <label>阅读状态:</label>
+              <select name="downlist">
+                  <option>全部</option>
+                <option>已阅读</option>
+                <option>未阅读</option>
+                <option>正在阅读</option>
+                <option>已完结</option>
+                <option>未完结</option>
+               </select>
+              <label>小说类型:</label>
+               <select name="downlis2">
+               <option>全部</option>
+              {% for ii  in dis_type %}
+                <option>{{ ii.type }}</option>
+               {% endfor %}
+               </select>
+
+          <input type="submit" name="subm"  value="查询"  />
+          </form>
+       </div>
+
+         <ul  style="margin: 0 auto ;margin-left: 2px">
+               {% for i  in list_nove %}
+                 <div class="book_info">
+            <div class="xsbjjs">
+                   <p style="font-weight: normal;font-size:15px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: left;margin-top:1px;height: 98px " href="#">
+                                      {{i.zjtitle|truncatechars:145}}
+                   </p>
+            </div>
+
+              <div class="image">
+                   <img    src="{{ MEDIA_URL }}{{ i.img}}" width="180px"  height="220px">
+            </div>
+
+             <div class="wz_title">
+               <div class="nove_title">
+                          <p style="font-weight: normal;font-size:18px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 37px " href="#">{{ i.name|truncatechars:15}}</p>
+
+               </div>
+            </div>
+             <div class="wz_title">
+                 <div class="wz_info1">
+                   <p style="font-weight: normal;font-size:15px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 27px " href="#">{{ i.singer}}</p>
+                 </div>
+                 <div class="wz_info1">
+                       <p style="font-weight: normal;font-size:15px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 27px " href="#">{{ i.type}}</p>
+
+                 </div>
+
+            </div>
+            <div class="wz_title">
+                 <div class="wz_info1">
+                        <p style="font-weight: normal;font-size:15px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 27px " href="#">{{ i.iswj}}</p>
+
+                 </div>
+                 <div class="wz_info1">
+                       <p style="font-weight: normal;font-size:15px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 27px " href="#">{{ i.zjs}}</p>
+
+                 </div>
+
+            </div>
+            <div class="wz_title">
+                 <div class="wz_info1">
+                           <p style="font-weight: normal;font-size:15px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 27px " href="#">{{ i.fbrq}}</p>
+
+                 </div>
+                 <div class="wz_info1">
+                   <p style="font-weight: normal;font-size:15px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 27px " href="#">{{ i.ydzj}}</p>
+
+                 </div>
+
+            </div>
+            <div class="wz_title">
+                 <div class="wz_info1">
+                     <p style="font-weight: normal;font-size:15px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 27px " href="#">
+                         {% if i.ydzt == '正在阅读' %}
+                             正在阅读
+                          {% elif i.ydzt == '已阅读' %}
+                             已阅读
+                          {% elif i.ydzt == '未阅读' %}
+                             未阅读
+                          {% endif %}
+
+
+                     </p>
+
+                 </div>
+                 <div class="wz_info1">
+                      {% if i.ydzt == '正在阅读' %}
+
+                          <a href="{% url 'novread' i.ydid 1 %}"  style="margin-top:1px;float: left;text-align: center;width: 90px " class="aButton">继续阅读</a>
+                       {% else %}
+                           <a href="{% url 'novread' i.id  1 %}"  style="margin-top:1px;float: left;text-align: center;width: 90px " class="aButton">开始阅读</a>
+                     {% endif %}
+                 </div>
+
+            </div>
+
+
+
+      </div>
+                {% endfor %}
+         </ul>
+       <div class="pageli">
+            {% for i in total_list %}
+              <a style="color: #fa2581; width: 10px;float: left;margin-left: 15px;text-align: center" href='{%  url 'mynove' i %}'> {{ i }}</a>
+          {% endfor %}
+       </div>
+    </div>
+{% endblock %}
+{#    <div class="book_info">#}
+{##}
+{#       </div>#}
+{#    <div class="book_info">#}
+{##}
+{#       </div>#}
+{#    <div class="book_info">#}
+{##}
+{#       </div>#}
+
+
+

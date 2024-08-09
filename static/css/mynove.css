@@ -1,0 +1,117 @@
+.info_center{
+       margin: 20px auto;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #73db19;
+      height: 950px;
+      width: 80%;
+}
+.info_top{
+       margin-top:15px;
+      margin-left: 35px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #73db19;
+      height: 45px;
+      width: 1370px;
+
+}
+
+.search_info{
+      margin-top:15px;
+      margin-left: 35px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #73db19;
+      height: 45px;
+      width: 1370px;
+}
+
+.book_info{
+    margin-top:10px;
+      margin-left: 1px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #73db19;
+      height: 350px;
+      width: 450px;
+      float: left;
+
+}
+.xsbjjs{
+     margin-top:5px;
+      margin-left: 5px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #73db19;
+      height: 100px;
+      width: 435px;
+
+
+}
+.image{
+     margin-top:5px;
+      margin-left: 5px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #73db19;
+      height: 220px;
+      width: 180px;
+    float: left;
+
+}
+.wz_title{
+     margin-top:2px;
+      margin-left: 2px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #73db19;
+      height: 40px;
+      width: 250px;
+    float: left;
+
+}
+.wz_info1{
+    margin-top:3px;
+      margin-left: 3px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #73db19;
+      height: 30px;
+      width: 115px;
+     float: left;
+
+}
+.pageli{
+
+    margin-top:750px;
+      margin-left: 45px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #73db19;
+      height: 40px;
+      width: 1350px;
+}
+
+select {
+/* 设置字体和背景颜色 */
+font-family: Arial;
+background-color: #f2f2f2;
+/* 隐藏默认的下拉箭头 */
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+/* 设置选框的样式 */
+width: 200px;
+height: 30px;
+padding: 5px 10px;
+border: none;
+border-radius: 0px;
+/* 设置下拉箭头的样式 */
+/*background-image: url("/static/image/down-arrow.jpg");width: 15px;height: 15px;*/
+background-position: right center;
+background-repeat: no-repeat;
+/* 设置下拉菜单的样式 */
+text-indent: 0.01px;
+text-overflow: "";
+}

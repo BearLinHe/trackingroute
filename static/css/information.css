@@ -1,0 +1,141 @@
+.info_center{
+       margin: 20px auto;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #73db19;
+      height: 1100px;
+      width: 80%;
+}
+
+  .info_top{
+        margin: 20px auto;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #73db19;
+      height: 700px;
+      width: 95%;
+}
+
+.info_bot{
+        margin: 20px auto;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #73db19;
+      height: 300px;
+      width: 95%;
+}
+
+.info_gmxx{
+      margin-top: 2px;
+      margin-left: 2px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1940;
+      height: 300px;
+      width: 400px;
+      float: left;
+
+}
+
+.info_xsbj{
+     margin-top: 5px;
+      margin-left: 5px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1940;
+      height: 100px;
+      width: 390px;
+}
+
+.info_img{
+      margin-top: 5px;
+      margin-left: 5px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1940;
+      height: 180px;
+      width: 100px;
+    float: left;
+
+}
+.info_zwxx{
+     margin-top: 5px;
+      margin-left: 110px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1940;
+      height: 180px;
+      width: 285px;
+
+}
+.nove_title{
+   margin-top: 5px;
+      margin-left: 5px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1940;
+      height: 35px;
+      width: 270px;
+
+}
+
+.nove_left{
+     margin-top: 2px;
+      margin-left: 2px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #53db19;
+      height: 25px;
+      width: 125px;
+      float: left;
+}
+
+.pageli{
+       margin-top:650px;
+      margin-left: 50px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #08d01b;
+      height: 20px;
+      width: 1200px;
+}
+
+table{
+    width: 90%;
+    border-collapse: collapse;
+}
+
+table caption{
+    font-size: 2em;
+    font-weight: bold;
+    margin: 1em 0;
+}
+
+th,td{
+    border: 0 solid #999;
+    text-align: left;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+table thead tr{
+    background-color: #28c1c1;
+    color: #fff;
+}
+
+table tbody tr:nth-child(odd){
+    background-color: #eee;
+}
+
+table tbody tr:hover{
+    background-color: #ccc;
+}
+
+table tbody tr td:first-child{
+    color: #48035e;
+}
+
+table tfoot tr td{
+    text-align: left;
+    padding-right: 20px;
+}

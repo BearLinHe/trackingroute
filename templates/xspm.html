@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+     <link rel="stylesheet" type="text/css" href="{% static 'css/xspm.css' %}">
+{% endblock %}
+{% block body %}
+    <div class="phcenter">
+    <div class="title">
+       <img  height="98px"  width="1215" style="margin-top: 1px" src="{% static 'image/phb.jpg' %} ">
+        <h1 class="bot"> 小说排行版</h1>
+    </div>
+    <div class="phlist" >
+          <table>
+                    <thead>
+                     <tr>
+                       <th style="text-align: center">排行</th>
+                      <th  style="text-align: center" >封面</th>
+                      <th style="text-align: center">名称</th>
+                      <th style="text-align: center">作者</th>
+                      <th style="text-align: center">发布日期</th>
+                      <th style="text-align: center">购买数量</th>
+                      <th style="text-align: center">下载数量数量</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in list_nove %}
+                        <tr>
+                            <td  width="200" style="text-align: center;color: #f5073d">{{ forloop.counter}}</td>
+
+                            <td width="400" style="text-align: center">
+                                <img    src="{{ MEDIA_URL }}{{ i.img}}" width="100px"  height="60">
+                            </td>
+                            <td width="400" style="text-align: center">
+                                <a  style=""  href="{%  url 'nove_yued' i.bookid 'yd' %}" > {{ i.name }}</a>
+
+
+                            </td>
+                            <td width="400" style="text-align: center">{{ i.singer }}</td>
+
+                             <td width="400" style="text-align: center">{{ i.fbrq }}</td>
+                              <td width="400" style="text-align: center">{{ i.lwzs }}</td>
+                            <td width="400" style="text-align: center">{{ i.lwkf }}</td>
+                         </tr>
+
+                    {% endfor %}
+                    </tbody>
+          </table>
+
+    </div>
+    <div class="bottm">
+         {% for i in totle_page %}
+                 <a  style="width: 20px;float: left;margin-left: 50px" href={% url 'rank'   i %}> {{ i }}</a>
+          {% endfor %}
+    </div>
+
+    </div>
+{% endblock %}

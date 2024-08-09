@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+     <link rel="stylesheet" type="text/css" href="{% static 'css/nvol_fl.css' %}">
+{% endblock %}
+{% block body %}
+    <div class="nv_center">
+       <div class="center_left">
+         <img width="20px" height="20px"  style="float: left;margin-top: 5px" src="{% static 'image/person.ico' %} ">
+            <a  style="font-size: 25px" href='{%  url 'nove_fl' 0 1  %}'>所有分类</a>
+
+            <ul>
+                {% for i  in label %}
+                   <li >
+                       <img width="20px" height="20px"  style="float: left;margin-top: 5px" src="{% static 'image/cx.ico' %} ">
+                       <a style="font-size: 25px;width: 120px;margin-left: 30px" href='{%  url 'nove_fl' i.id 1 %}'>{{i.name}}</a>
+                   </li>
+                   {% endfor %}
+             </ul>
+
+       </div>
+        <div class="center_right">
+           <div class="center_toop">
+{#                {% for message in messages %}#}
+{#                    {{ message }}#}
+{#                 {% endfor %}#}
+{#              <p  style=" margin-top: 3px;font-size: 25px" class="goodman">欢迎浏览张银昌小说网站</p>#}
+
+            <p  style=" margin-top: 3px;font-size: 25px" class="goodman">
+              {%  if messages  %}
+               {% for message in messages %}
+                   {{ message }}
+                 {% endfor %}
+                  {% else %}
+                      欢迎浏览张银昌小说网站
+               {% endif %}
+            </p>
+
+
+           </div>
+
+            <ul style="margin: 0px auto;margin-left: 10px">
+
+
+                {% for i  in list_nove %}
+                <div class="nove_xinfo">
+                    <div class="xinfo_left">
+                        <div class="xinfo_img">
+                             <img    src="{{ MEDIA_URL }}{{ i.img}}" width="90px"  height="110px">
+                        </div>
+                        <div class="xinfo_fbrq">
+                              <p style="font-weight: normal;font-size:19px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 20px " href="#">{{ i.fbsj}}</p>
+                             </div>
+                    </div>
+                     <div class="nv_info">
+                         <div class="info_title">
+                             <a   style="font-weight: normal;font-size:18px;background: #b5f1ec;font-family: 'Bell MT' ;text-align: center" href="{%  url 'nove_yued' i.bookid 'yd' %}">{{ i.name|truncatechars:9}}</a>
+                         </div>
+                          <div class="info_ydxx">
+                              <div class="ydxx_wj">
+                              <p style="font-weight: normal;font-size:18px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 35px " href="#">{{ i.iswj}}</p>
+
+                              </div>
+                              <div class="ydxx_zj">
+                              <p style="font-weight: normal;font-size:18px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 35px " href="#">{{ i.zjs}}</p>
+
+                              </div>
+                              <div class="ydxx_xzcs">
+                            <p style="font-weight: normal;font-size:18px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 30px " href="#">{{ i.xzsl}}</p>
+
+                              </div>
+                               <div class="ydxx_gmcs">
+                           <p style="font-weight: normal;font-size:18px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 30px " href="#">{{ i.gmsl}}</p>
+
+                              </div>
+
+
+
+                         </div>
+                        <div class="inro_bottm">
+                              <div class="bottm_zzxx">
+                                  <p style="font-weight: normal;font-size:15px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 20px " href="#">{{ i.singer|truncatechars:6}}</p>
+
+                              </div>
+                            <div class="bottm_type">
+                                    <p style="font-weight: normal;font-size:15px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 20px " href="#">{{ i.type|truncatechars:6}}</p>
+
+                              </div>
+
+                        </div>
+                     </div>
+                    <div class="xinfo_yued">
+                        <div class="yued_ydxs">
+                            <a  style="height: 18px;width: 75px ;margin-top: 0px;font-size: 15px;border-radius: 0;margin-left: 0px"  href="{%  url 'nove_yued' i.bookid 'yd' %}" class="aButton">阅读小说</a>
+                        </div>
+                         <div class="yued_goumai">
+                             <a style="height: 18px;width: 75px ;margin-top: 0px;font-size: 15px;border-radius: 0;margin-left: 0px;background: #07cfee" href="{%  url 'nove_yued' i.bookid 'gm' %}" class="aButton">购买</a>
+
+                        </div>
+                        <div class="yued_info">
+                            {% if i.is_hy %}
+                                 <p class="goodman">您是VIP</p>
+                             {% else %}
+                                    <p class="goodman_hy">普通会员</p>
+                             {% endif %}
+
+{#                            提示信息#}
+{#                            {% for message in messages %}#}
+{##}
+{#                                  {{ message }}#}
+{#                             {% endfor %}#}
+
+                        </div>
+                    </div>
+               </div>
+                {% endfor %}
+            </ul>
+         <div class="page">
+          {% for i in totle_page %}
+              <a style="color: #fa2581; width: 10px;float: left;margin-left: 15px;text-align: center" href='{%  url 'nove_fl' label_id i%}'> {{ i }}</a>
+          {% endfor %}
+        </div>
+       </div>
+
+    </div>
+
+    {% if messages %}
+
+{% for message in messages %}
+
+{{ message }}
+{% endfor %}
+
+{% endif %}
+{#    {% if messages %}#}
+{#        <script>#}
+{#        alert(messages)#}
+{#            {% for  msg  in messages %}#}
+{#                alert(msg)#}
+{#            {% endfor %}#}
+{#        </script>#}
+{#    {% endif %}#}
+{% endblock %}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>物流轨迹设置</title>
+
+    {% load static %}
+      <link rel="stylesheet" type="text/css" href="{% static 'css/wlgjsz.css' %}">
+{#    <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">#}
+
+      <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}" tppabs="{% static 'layui/css/layui.css' %}"  media="all">
+
+     <script type="text/javascript" src="{% static 'layui/layui.js'%}"></script>
+</head>
+<body>
+
+<div class="main">
+    <div class="titfinfo">
+        <form id="addGoodsForm" class="layui-form" action="/wlsz/" method="post">
+            {% csrf_token %}
+            {% for item in table1_data %}
+           <div class="layui-container">
+          <div class="layui-form-item">
+           <div class="layui-row">
+              <div class="layui-col-md1">
+              <label class="layui-form-label">Load# </label>
+              </div>
+             <div class="layui-col-md3">
+              <div class="layui-input-inline">
+{#              <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">#}
+                  <input type="text" id="hwbh" name="hwbh" lay-verify="required" value="{{item.TP01 }}" autocomplete="off" class="layui-input">
+              </div>
+             </div>
+               <div class="layui-col-md1">
+               <label class="layui-form-label">MC#</label>
+               </div>
+                  <div class="layui-col-md3">
+              <div class="layui-input-inline">
+{#              <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">#}
+                  <input type="text" id="gysbh" name="gysbh" lay-verify="required" value="{{ item.TP02 }}" autocomplete="off" class="layui-input">
+              </div>
+                  </div>
+                 <div class="layui-col-md1">
+                <label class="layui-form-label">Truck#</label>
+                 </div>
+                <div class="layui-col-md3">
+              <div class="layui-input-inline">
+{#              <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">#}
+                  <input type="text" id= "ycbh"  name="tcbh" lay-verify="required" value="{{ item.TP04 }}" autocomplete="off" class="layui-input">
+
+              </div>
+                </div>
+           </div>
+          </div>
+            <div class="layui-form-item">
+               <div class="layui-row">
+                    <div class="layui-col-md1">
+                <label class="layui-form-label">Trailer#</label>
+                    </div>
+                    <div class="layui-col-md3">
+              <div class="layui-input-inline">
+{#              <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">#}
+                  <input type="text" id="kcbh" name="kcbh" lay-verify="required" value="{{ item.TP13 }}" autocomplete="off" class="layui-input">
+              </div>
+                    </div>
+                    <div class="layui-col-md1">
+                  <label class="layui-form-label">Driver name</label>
+                    </div>
+                     <div class="layui-col-md3">
+              <div class="layui-input-inline">
+{#              <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">#}
+                  <input type="text" id="sjxm" name="sjxm" lay-verify="required" value="{{ item.TP05 }}" autocomplete="off" class="layui-input">
+              </div>
+                     </div>
+                     <div class="layui-col-md1">
+                 <label class="layui-form-label" style="width: 88px">Driver phone#</label>
+                     </div>
+                     <div class="layui-col-md3">
+              <div class="layui-input-inline">
+{#              <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">#}
+                   <input type="tel" id="phone" name="phone" lay-verify="required|phone" value="{{ item.TP06 }}" autocomplete="off" class="layui-input">
+              </div>
+                     </div>
+               </div>
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-row">
+                   <div class="layui-col-md2">
+                 <label class="layui-form-label" style="width: 120px">Starting position#</label>
+                   </div>
+                   <div class="layui-col-md4">
+                <div class="layui-input-inline" style="width: 300px ">
+                  <input type="text" id="qd" name="qd" lay-verify="title" autocomplete="off" value="{{ item.TP07 }}" class="layui-input">
+                </div>
+                   </div>
+                    <div class="layui-col-md2">
+                 <label class="layui-form-label" style="width: 120px">End position#</label>
+                    </div>
+                   <div class="layui-col-md4">
+                <div class="layui-input-inline" style="width: 300px ">
+                  <input type="text" id="zd" name="zd" lay-verify="title" autocomplete="off" VALUE="{{ item.TP08 }}" class="layui-input">
+                </div>
+                   </div>
+              </div>
+            </div>
+
+              <div class="layui-form-item">
+               <div class="layui-row">
+
+                   <div class="layui-col-md1">
+                <label class="layui-form-label">start time#</label>
+                   </div>
+                    <div class="layui-col-md3">
+                     <div class="layui-input-inline">
+                    <input type="text" class="layui-input" lay-verify="required" name="qssj"  autocomplete="off"   value="{{ item.TP09 }}" id="kssj" placeholder="yyyy-MM-dd HH:mm:ss">
+                    </div>
+                    </div>
+                    <div class="layui-col-md1">
+                   <label class="layui-form-label" >End time#</label>
+                    </div>
+                       <div class="layui-col-md3">
+                <div class="layui-input-inline" >
+                      <input type="text" class="layui-input" name="jssj"   autocomplete="off"   value="{{ item.TP10 }}" id="jssj" placeholder="yyyy-MM-dd HH:mm:ss">
+                </div>
+                       </div>
+                    <div class="layui-col-md2">
+                 <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">路线生成</button>
+                    </div>
+                            <div class="layui-col-md2">
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+{#                 <button class="layui-btn"  type="reset" >新增</button>#}
+              </div>
+              </div>
+                       {% endfor %}
+            </div>
+
+        </form>
+
+{#        提交的信息#}
+    </div>
+    <div class="wlgjxx">
+        <div class="layui-card">
+          <div class="layui-card-body">
+        <table class="my-table" id="table2" lay-filter="table2"></table>
+    </div>
+</div>
+
+
+    </div>
+
+</div>
+<script type="text/javascript" src="{% static 'layui/layui.js'%}"></script>
+<script>
+
+ function doSearch() {
+     alert('02')
+    {#document.getElementById("addGoodsForm").reset()#}
+    {#.reset();#}
+    {#  var hwbh = $('#hwbh').val();#}
+      alert('03')
+ }
+
+layui.use('laydate', function(){
+  var laydate = layui.laydate;
+  //日期时间选择器
+  laydate.render({
+    elem: '#kssj'
+    ,type: 'datetime'
+  });
+  laydate.render({
+    elem: '#jssj'
+    ,type: 'datetime'
+  });
+  });
+layui.use(['table', 'form'], function(){
+  var table = layui.table;
+  table.render({
+    elem: '#table2',
+    data: {{ table2_data|safe }},
+      limit:100000,
+      page: true, // 开启分页
+      event:true,
+    cols: [[
+        {field: 'LP08', title: '抵达时间',width:220,align:"center"},
+        {field: 'LP12', title: '终点地址',width:600,align:"center"},
+    ]]
+  });
+
+});
+
+
+
+
+
+</script>
+
+</body>
+</html>

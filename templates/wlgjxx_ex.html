@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+    <meta charset="UTF-8">
+    <title>物流轨迹信息展示</title>
+    {% load static %}
+      <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/swiper.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/wlgj_ex.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/wlgj_info.css' %}">
+      <script type="text/javascript" src="{% static 'js/swiper.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'layui/layui.js'%}"></script>
+
+</head>
+
+    <body>
+{# 搜获页面 #}
+<form action="/wlgj/" method="post">
+    {% csrf_token %}
+<div class="derc">
+    <div class="derc_search">
+        <div class="l_secrch"> <input class="l_text" value="{{search_hpbh }}" name="search_hpbh"  placeholder="Goods number" autocomplete="off"></div>
+
+         <div class="l_secrch"> <input class="l_text" value="{{search_cys}}" name="search_cys"  placeholder="Carrier number" autocomplete="off"></div>
+        <div class="l_but"><input type="submit"  value="query"/></div>
+
+    </div>
+
+</div>
+ </form>
+{#客户信息展示 #}
+<div class="khxx">
+    <div class="khxq">
+{#        <div class="info_img">#}
+{##}
+{#        </div>#}
+        <div class="info_khxx">
+            {% for item in table1_data %}
+           <div class="text_info">
+               Load#:{{ item.TP01}}
+           </div>
+            <div class="dotted-divider"></div>
+            <div class="text_info">
+              MC#:{{ item.TP02}}
+           </div>
+             <div class="dotted-divider"></div>
+             <div class="text_info">
+              MC name:{{ item.TP03}}
+             </div>
+             <div class="dotted-divider"></div>
+             <div class="text_info">
+              Trailer#:{{ item.TP04}}
+             </div>
+             <div class="dotted-divider"></div>
+               <div class="text_info">
+               Truck#:{{ item.TP13}}
+             </div>
+             <div class="dotted-divider"></div>
+
+             <div class="text_info">
+               Driver name:{{ item.TP05}}
+           </div>
+             <div class="dotted-divider"></div>
+            <div class="text_info">
+               Driver phone:{{ item.TP06}}
+           </div>
+             <div class="dotted-divider"></div>
+           {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="gjxx">
+ <div class="package-status">
+        <div class="status-box">
+            <ul class="status-list">
+                  {% for item in table2_data %}
+                <li>
+                    <div class="status-content-before">{{ item.LP12}}</div>
+                    <div class="status-time-before">{{ item.LP11}}</div>
+                    <div class="status-line"></div>
+                </li>
+                 {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

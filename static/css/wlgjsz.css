@@ -1,0 +1,75 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.main{
+  margin: 5px;
+  /*border-style: solid;*/
+  /*border-color: #91db19;*/
+  padding: 2px;
+   /*display: flex;*/
+    margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+
+      height: 100%;
+      width: 80%;
+
+}
+.titfinfo{
+
+     margin: 5px;
+  /*border-style: solid;*/
+  /*   border-color: #db195d;*/
+  padding: 2px;
+  /*display: flex;*/
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+     align-items: center;
+
+      height: 22.5%;
+      width: 70%;
+}
+.wlgjxx{
+     margin: 2px;
+  /*border-style: solid;*/
+     border-color: #db7d19;
+  padding: 2px;
+  /*display: flex;*/
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+     align-items: center;
+
+      height: 75%;
+      width: 70%;
+
+}
+
+/* 假设你的表格class为 .my-table */
+.my-table {
+  background-color: #9e1313; /* 更改表格背景色 */
+  color: #333; /* 更改文字颜色 */
+}
+
+/* 为了改变交替行的背景色，可以添加如下样式 */
+.my-table tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.my-table tr:nth-child(even) {
+  background-color: #fdfdfd;
+}
+
+/* 如果你想要改变hover状态下的背景色，可以添加如下样式 */
+.my-table tr:hover {
+  background-color: #ba0909;
+}

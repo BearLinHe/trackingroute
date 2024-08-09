@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+     <link rel="stylesheet" type="text/css" href="{% static 'css/information.css' %}">
+{% endblock %}
+
+{% block body %}
+    <div class="info_center">
+    <div class="info_top">
+        <ul style="margin-left: 1px">
+      {% for i  in list_nove %}
+         <div class="info_gmxx">
+               <div class="info_xsbj">
+                           <p style="font-weight: normal;font-size:15px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: left;margin-top:1px;height: 98px " href="#">
+                                      {{i.zjtitle|truncatechars:130}}
+                           </p>
+
+
+               </div>
+              <div class="info_img">
+                     <img    src="{{ MEDIA_URL }}{{ i.img}}" width="100px"  height="180px">
+               </div>
+             <div class="info_zwxx">
+                      <div class="nove_title">
+                          <p style="font-weight: normal;font-size:18px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 35px " href="#">{{ i.name|truncatechars:12}}</p>
+
+                      </div>
+                  <div class="nove_title">
+                        <div class="nove_left">
+                          <p style="font-weight: normal;font-size:15px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 25px " href="#">{{ i.singer|truncatechars:9}}</p>
+
+                        </div>
+                      <div class="nove_left">
+                        <p style="font-weight: normal;font-size:15px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 25px " href="#">{{ i.type}}</p>
+
+                        </div>
+                      </div>
+                  <div class="nove_title">
+                          <div class="nove_left">
+                          <p style="font-weight: normal;font-size:15px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 25px " href="#">{{ i.iswj}}</p>
+     </div>
+                      <div class="nove_left">
+                         <p style="font-weight: normal;font-size:15px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 25px " href="#">{{ i.zjs}}</p>
+
+                        </div>
+
+                      </div>
+                  <div class="nove_title">
+                           <div class="nove_left">
+                        <p style="font-weight: normal;font-size:10px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 25px " href="#">{{ i.fbrq}}</p>
+
+                        </div>
+                      <div class="nove_left">
+                         <p style="font-weight: normal;font-size:10px;background: #cbe7f1;font-family: 'Bell MT' ;text-align: center;margin-top:1px;height: 25px " href="#">{{ i.gmrq}}</p>
+
+                        </div>
+                      </div>
+               </div>
+         </div>
+            {% endfor %}
+
+        </ul>
+          <div class="pageli">
+          {% for i in totle_page %}
+              <a style="color: #fa2581; width: 10px;float: left;margin-left: 15px;text-align: center" href='{%  url 'information' i 1 %}'> {{ i }}</a>
+          {% endfor %}
+           </div>
+
+    </div>
+    <div class="info_bot">
+             <table>
+                    <thead>
+
+                    <tbody>
+                    {% for li in list_pl %}
+
+
+                        <tr>
+                           <td width="400">{{ li.username }}</td>
+                            <td width="400">{{ li.name }}</td>
+                            <td width="400">{{ li.plrq }}</td>
+                            <td width="600">{{ li.content }}</td>
+                         </tr>
+
+                    {% endfor %}
+                    </tbody>
+            </table>
+    </div>
+      {% for i in totalpl_list %}
+
+                            <a  style="width: 20px; margin-left :50px;float: left" href={% url 'information'   1 i %}> {{ i }}</a>
+      {% endfor %}
+
+    </div>
+{% endblock %}

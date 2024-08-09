@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/swiper.min.css' %}">
+
+      <script type="text/javascript" src="{% static 'js/swiper.min.js'%}"></script>
+
+
+</head>
+<body>
+{#第一层是整体位置#}
+<div class="man">
+ {#第二层标头#}
+    <div class="derc">
+        <!-- 网站log -->
+        <div class="derc_left">
+            <img style="margin-left: 20px;margin-top: 5px;height: 50px" src="{% static 'image/logo.png' %} " alt="logo">
+        </div>
+
+           <form action="/search/serch/" method="post">
+                       {% csrf_token %}
+                     <div class="derc_search">
+                     <div class="l_secrch"> <input class="l_text" value="{{search_text }}" name="search_text"></div>
+                     <div class="l_but"><input type="submit"  value="搜 索"/></div>
+                     </div>
+           </form>
+        <div class="derc_grxx">
+           <form action="/regsvr/login/" method="post">
+                {% csrf_token %}
+                   <div class="grxx">
+                     <div class="l_user"> <input type="text"  placeholder="手机号" value="{{mobile }}" name="mobile"></div>
+                     <div class="l_pass"> <input type="password" placeholder="密码" value="{{password }}" name="password"></div>
+                     <div class="l_butdl"><input type="submit"  value="登录"/></div>
+                       <a href="{% url 'regsvr' %}" class="aButton">注册</a>
+                       <div class="grzx" style=" position: relative;">
+                           <a href="{% url 'person' %} " style="text-align: center;font-size:0;overflow:hidden;height: 38px">
+
+                           <img style="margin-top:1px;display:block; float:left;vertical-align:top; height: 38px;width:40px" src="{% static 'image/login.jpg' %} "  >
+{#                            <div class="dropdown-content">#}
+{#                                <a style="width: 70px;margin-top: 5px;background: #09a4ea " href="{% url 'person' %} ">个人中心</a>#}
+{#                                <a style="width: 70px;margin-top: 5px;background: #07a3ea" href="{% url 'logout' %}">注销登录</a>#}
+{##}
+{#                            </div>#}
+                           </a>
+                       </div>
+                       <div class="grname">
+                           <a href="{% url 'person' %} " style="text-align: center;font-size:20px; font-weight: bolder;color: #10d548; width: 130px;height: 38px">
+                               {{ username }}
+                           </a>
+
+                       </div>
+
+                       <div class="zhuxiao">
+                           <a href="{% url 'logout' %} " style="margin-top: 6px" class="aButton">注销登录</a>
+                       </div>
+                    </div>
+           </form>
+            <!-- 登录信息提示-->
+                   <div class="grxx_info">
+                     <span>
+                     {{ error}}
+                     {% if messages  %}
+                      {% for message in messages %}
+                           {{ message }}
+                       {% endfor %}
+                     {% endif %}
+                     </span>
+                   </div>
+        </div>
+       <hr color="rgb(254,254,254)"   width="98%">
+    </div>
+
+
+  {#  第三层 分类 #}
+    <div class="dsac">
+        <div class="dsac_qbfl"  >
+             <img style=" margin-left: 1px;margin-top: 10px;height: 20px" src="{% static 'image/xiaotu.ico' %} " alt="logo">
+
+             <a href="{% url 'rank' 1 %}">排行榜</a>
+            <a href="{% url 'index' %} ">首页</a>
+        </div>
+         <div class="dsac_flxx">
+              <ul>
+                  {% for i  in label %}
+                   <li><a href='{%  url 'nove_fl' i.id 1 %}'>{{i.name}}</a></li>
+                   {% endfor %}
+             </ul>
+        </div>
+
+    </div>
+  {#  第四层 轮播 #}
+    <div class="dsic">
+        <div class="xsfl">
+        <a  style="font-size: 25px" href='{%  url 'nove_fl' 0 1 %}'>所有分类</a>
+            <ul>
+
+                  {% for i  in labelall %}
+                   <li ><a href='{%  url 'nove_fl' i.id 1 %}'>{{i.name}}</a></li>
+                   {% endfor %}
+             </ul>
+        </div>
+        <div   class="imginfo" id="imginfo">
+
+
+           <div class="imginfo_bottom"  id ="imginfo_bottom">
+
+               {% for i  in listrm %}
+                    <a href="{%  url 'nove_yued' i.bookid 'sy' %}"  id ='b{{ forloop.counter}}' target="_blank" style="height: 30px;line-height: 30px;width: 150px; margin-left: 5px; float: left">{{ i.lbname|truncatechars:9}}</a>
+               {%  endfor %}
+           </div>
+        </div>
+
+    </div>
+  {#  第五层 小说信息 #}
+    <div class="dwuc">
+    <div class="biaoti">
+        最 新 小 说
+        <hr style="border-color: #4ac1f7" />
+    </div>
+     <ul>
+         {% for i  in list_nove %}
+         <li class="noveinfo">
+             <div class="noveinfo_imge">
+
+                     <a style="width:80px;height:  150px;display: inline-block;text-align: center;"  href="{%  url 'nove_yued' i.bookid 'sy' %}">
+                      <img    src="{{ MEDIA_URL }}{{ i.img}}" width="90px"  height="150" style="margin:0;padding:0;">
+                     </a>
+
+             </div>
+             <div class="noveinfo_wzinfo">
+
+                    <div class="wz_name">
+                       <a style="font-weight: normal;font-family: 'Bell MT' " href="{%  url 'nove_yued' i.bookid 'sy' %}">{{ i.name|truncatechars:11}}</a>
+                    </div>
+                    <div class="wz_name">
+                       <div class="wz_zzj">
+                            {{ i.zjs}}
+                       </div>
+                        <div class="wz_zzj">
+                           {{ i.xjsl}}
+                       </div>
+                    </div>
+                   <div class="wz_name">
+                       <div class="wz_zzj">
+                           {{ i.gmsl}}
+                       </div>
+                       <div class="wz_zzj">
+                             {{ i.xzsl}}
+                       </div>
+                    </div>
+                 <div class="noveinfo_zzinfo" >
+                     <img width="20px" height="20px"  style="float: left;margin-top: 5px" src="{% static 'image/person.ico' %} ">
+                     <a href="{%  url 'nove_yued' i.bookid 'sy' %}" style="float: left">{{ i.singer|truncatechars:6}} </a>
+                     <a href="{%  url 'nove_yued' i.bookid 'sy' %}" style="float: right;background:repeating-linear-gradient(to right ,#ccdaf1,#f5e7f1);font-weight: bold;border-radius: 10px 10px 10px 10px;">{{ i.type|truncatechars:4}}</a>
+                 </div>
+             </div>
+         </li>
+         {% endfor %}
+     </ul>
+     <div class="biaotixj">
+        推 荐 小 说
+        <hr style="border-color: #4ac1f7" />
+    </div>
+    <ul>
+         {% for i  in list_xsxj %}
+         <li class="noveinfo">
+             <div class="noveinfo_imge">
+
+                     <a style="width:80px;height:  150px;display: inline-block;text-align: center;"  href="{%  url 'nove_yued' i.bookid 'sy' %}">
+                      <img    src="{{ MEDIA_URL }}{{ i.img}}" width="90px"  height="150" style="margin:0;padding:0;">
+                     </a>
+
+             </div>
+             <div class="noveinfo_wzinfo">
+
+                    <div class="wz_name">
+                       <a style="font-weight: normal;font-family: 'Bell MT' " href="{%  url 'nove_yued' i.bookid 'sy' %}">{{ i.name|truncatechars:11}}</a>
+                    </div>
+                    <div class="wz_name">
+                       <div class="wz_zzj">
+                            {{ i.zjs}}
+                       </div>
+                        <div class="wz_zzj">
+                           {{ i.xjsl}}
+                       </div>
+                    </div>
+                   <div class="wz_name">
+                       <div class="wz_zzj">
+                           {{ i.gmsl}}
+                       </div>
+                       <div class="wz_zzj">
+                             {{ i.xzsl}}
+                       </div>
+                    </div>
+                 <div class="noveinfo_zzinfo" >
+                     <img width="20px" height="20px"  style="float: left;margin-top: 5px" src="{% static 'image/person.ico' %} ">
+                     <a href="{%  url 'nove_yued' i.bookid 'sy' %}" style="float: left">{{ i.singer|truncatechars:6}} </a>
+                     <a href="{%  url 'nove_yued' i.bookid 'sy' %}" style="float: right;background:repeating-linear-gradient(to right ,#ccdaf1,#f5e7f1);font-weight: bold;border-radius: 10px 10px 10px 10px;">{{ i.type|truncatechars:4}}</a>
+                 </div>
+             </div>
+         </li>
+         {% endfor %}
+     </ul>
+
+     <div class="biaotixj">
+        搜 索 次 数
+        <hr style="border-color: #4ac1f7" />
+    </div>
+     <ul>
+         {% for i  in list_sscs %}
+         <li class="noveinfo">
+             <div class="noveinfo_imge">
+
+                     <a style="width:80px;height:  150px;display: inline-block;text-align: center;"  href="{%  url 'nove_yued' i.bookid 'sy' %}">
+                      <img    src="{{ MEDIA_URL }}{{ i.img}}" width="90px"  height="150" style="margin:0;padding:0;">
+                     </a>
+
+             </div>
+             <div class="noveinfo_wzinfo">
+
+                    <div class="wz_name">
+                       <a style="font-weight: normal;font-family: 'Bell MT' " href="{%  url 'nove_yued' i.bookid 'sy' %}">{{ i.name|truncatechars:11}}</a>
+                    </div>
+                    <div class="wz_name">
+                       <div class="wz_zzj">
+                            {{ i.zjs}}
+                       </div>
+                        <div class="wz_zzj">
+                           {{ i.xjsl}}
+                       </div>
+                    </div>
+                   <div class="wz_name">
+                       <div class="wz_zzj">
+                           {{ i.gmsl}}
+                       </div>
+                       <div class="wz_zzj">
+                             {{ i.xzsl}}
+                       </div>
+                    </div>
+                 <div class="noveinfo_zzinfo" >
+                     <img width="20px" height="20px"  style="float: left;margin-top: 5px" src="{% static 'image/person.ico' %} ">
+                     <a href="{%  url 'nove_yued' i.bookid 'sy' %}" style="float: left">{{ i.singer|truncatechars:6}} </a>
+                     <a href="#" style="float: right;background:repeating-linear-gradient(to right ,#ccdaf1,#f5e7f1);font-weight: bold;border-radius: 10px 10px 10px 10px;">{{ i.type|truncatechars:4}}</a>
+                 </div>
+             </div>
+         </li>
+         {% endfor %}
+     </ul>
+   <div class="biaotixj">
+        购 买 次 数
+        <hr style="border-color: #4ac1f7" />
+    </div>
+        <ul>
+         {% for i  in list_gmcs %}
+         <li class="noveinfo">
+             <div class="noveinfo_imge">
+
+                     <a style="width:80px;height:  150px;display: inline-block;text-align: center;"  href="{%  url 'nove_yued' i.bookid 'sy' %}">
+                      <img    src="{{ MEDIA_URL }}{{ i.img}}" width="90px"  height="150" style="margin:0;padding:0;">
+                     </a>
+
+             </div>
+             <div class="noveinfo_wzinfo">
+
+                    <div class="wz_name">
+                       <a style="font-weight: normal;font-family: 'Bell MT' " href="{%  url 'nove_yued' i.bookid 'sy' %}">{{ i.name|truncatechars:11}}</a>
+                    </div>
+                    <div class="wz_name">
+                       <div class="wz_zzj">
+                            {{ i.zjs}}
+                       </div>
+                        <div class="wz_zzj">
+                           {{ i.xjsl}}
+                       </div>
+                    </div>
+                   <div class="wz_name">
+                       <div class="wz_zzj">
+                           {{ i.gmsl}}
+                       </div>
+                       <div class="wz_zzj">
+                             {{ i.xzsl}}
+                       </div>
+                    </div>
+                 <div class="noveinfo_zzinfo" >
+                     <img width="20px" height="20px"  style="float: left;margin-top: 5px" src="{% static 'image/person.ico' %} ">
+                     <a href="{%  url 'nove_yued' i.bookid 'sy' %}" style="float: left">{{ i.singer|truncatechars:6}} </a>
+                     <a href="{%  url 'nove_yued' i.bookid 'sy' %}" style="float: right;background:repeating-linear-gradient(to right ,#ccdaf1,#f5e7f1);font-weight: bold;border-radius: 10px 10px 10px 10px;">{{ i.type|truncatechars:4}}</a>
+                 </div>
+             </div>
+         </li>
+         {% endfor %}
+     </ul>
+
+
+
+
+
+    </div>
+ {#  第六层 新书推荐 #}
+    <div class="dlic">
+
+
+         <div class="ydzx">
+            <img  width="250px"  height="275px"  style="margin-top: 2px" src="{% static 'image/ydzx.png' %} ">
+         </div>
+          <div class="container" >
+              <div class="swiper">
+                  <div class="swiper-wrapper">
+          <ul  class="swiper-slide">
+{#              <div  class="swiper-slide">#}
+
+               {% for i  in list_ydzx %}
+              <li class="ydzx_lis" >
+                  <div class="ydzx_lis_img">
+                      <img    src="{{ MEDIA_URL }}{{ i.img}}" width="100px"  height="150">
+                  </div>
+                  <div class="ydzx_lis_title">
+                      <a href="#" style="font-size: 20px;height: 39px;font-weight: bolder">{{ i.name|truncatechars:10}}</a>
+                  </div>
+                  <div class="ydzx_lis_singer">
+                     {{ i.singer|truncatechars:10}}
+                  </div>
+              </li>
+                {% endfor %}
+
+
+           </ul>
+                        </div>>
+                  </div>
+
+
+          </div>
+    </div>
+    {#  第七层 表底 #}
+    <div class="dqic">
+
+        <img  height="78px"  width="1300" style="margin-top: 2px" src="{% static 'image/bttonm.jpg' %} ">
+        <h1 class="bot"> 版权所有 XXXXXX@2023-07-27</h1>
+
+    </div>
+</div>
+
+ <script type="text/javascript" src="{% static 'js/index.js'%}"></script>
+
+</body>
+</html>
+<script type="text/javascript" src="{% static 'js/divlb.js'%}"></script>

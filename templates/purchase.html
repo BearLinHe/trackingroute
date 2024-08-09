@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购买</title>
+     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/purchase.css' %}">
+
+      <script type="text/javascript" src="{% static 'js/purchase.js'%}"></script>
+</head>
+<body>
+<div class="gmcenter">
+    <div class="gmimg">
+           <img style=" margin-right:3px;width: 1360px;height: 350px" src="{% static 'image/goumai.jpg' %} "  >
+    </div>
+    <div class="gminfo">
+        {%  for  nov  in list_nove %}
+        <div class="info_img">
+               <img    src="{{ MEDIA_URL }}{{ nov.img}}" width="200px"  height="300px">
+        </div>
+        <div class="info_jies">
+             <p style="margin-top: 1px;background: #d9e3ef; width: 790px;height:100px;font-size: 19px">
+                 {{ nov.zjtitle|truncatechars:180}}
+             </p>
+        </div>
+        <div class="info_zw">
+            <div class="nov_title">
+            <p style="margin-top: 1px;background: #719fd5; width: 750px;height :32px;font-size: 22px;text-align: center">
+                 {{ nov.name|truncatechars:200}}
+             </p>
+            </div>
+            <div class="nov_zw">
+                  <div class="fbsj">
+                       {{ nov.fbrq}}
+                  </div>
+                <div class="zuozhe">
+                     {{ nov.singer}}
+                </div>
+                <div class="zjs">
+                     {{ nov.zjs}}
+                </div>
+                 <div class="username">
+                       {{ nov.user}}
+                  </div>
+            </div>
+
+            <div  class="goumai">
+                  <div class="qrgoum">
+                     <a href="{% url 'purchase' nov.bookid %} "  style="margin-top:1px;margin-left:100px;float: left;text-align: center " class="aButton" onclick="return purcsh();">确认购买</a>
+                      <a href="{% url 'nove_fl' 0 1 %}" style="margin-top:1px;float: left;text-align: center;"  class="aButton">返回分类页面</a>
+                  </div>
+                   <div class="gmqrinfo">
+                        {% for message in messages %}
+                           {{ message }}
+                         {% endfor %}
+                  </div>
+
+{#                <a href="{% url 'index' %} " class="aButton">购买</a>#}
+
+            </div>
+
+           {% endfor %}
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

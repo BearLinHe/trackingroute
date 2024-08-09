@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/regsvr.css' %}">
+{#    <script type="text/javascript" src="{% static 'js/check.js' %}"></script>#}
+
+</head>
+<body>
+<div>
+{#    <div class="dlzx">#}
+{##}
+{#    </div>#}
+    <a  style="margin-left:1900px; margin-top: 25px;font-weight: bolder" href="{% url 'logout' %} " class="aButton">注销登录</a>
+
+<form action="/regsvr/person/" method="post">
+        {% csrf_token %}
+    <table>
+        <th colspan="2">个人中心</th>
+         <tr><td>手机号码(*)</td><td><input  style="width: 158px"  readonly="readonly" type="text"  value="{{mobile }}"   name="mobile" /></td></tr>
+        <tr><td><span>用户名(*)</span></td><td><input type="text" id="username" value="{{username }}" name="username" /></td></tr>
+        <tr><td><span>密码(*)</span></td><td><input type="password" id="password" name="password" /></td></tr>
+        <tr><td><span>确认密码(*)</span></td><td><input type="password" id="compassword" name="compassword" /></td></tr>
+        <tr><td  colspan="2"><input type="submit" name="subm"  value="修改"  /></td> </tr>
+        <tr>    <td  colspan="2" style="text-align: center">  <a href="{% url 'index' %} " class="aButton">返回首页</a>    </td></tr>
+        <tr><td style="color: #ec1414;text-align: left" colspan="2">{{ info }}</td></tr>
+    </table>
+
+</form>
+  <a style="margin-left:850px;margin-top: 2px;font-weight: bolder;font-size: 26px;" href="{% url 'information' 1 0 %} " class="aButton">消息通知</a>
+   <a  style="margin-left:150px;margin-top: 2px;font-weight: bolder;font-size: 26px" href="{% url 'mynove' 1 %} " class="aButton">我的书架</a>
+</div>
+
+</body>
+</html>

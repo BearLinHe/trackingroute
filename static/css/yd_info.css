@@ -1,0 +1,104 @@
+
+.yd_info{
+      margin: 20px auto;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1994;
+      height: 1300px;
+      width: 80%;
+
+
+}
+.yd_left{
+      margin-top: 15px ;
+      margin-left: 15px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1994;
+      height: 1200px;
+      width: 300px;
+      float: left;
+    background: #daf0fa;
+
+}
+
+.yd_centter{
+      margin-top: 15px ;
+      margin-left: 15px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1994;
+      height: 1200px;
+      width: 1050px;
+      float: left;
+
+}
+.biaoti{
+     margin-top: 15px ;
+      margin-left: 15px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1994;
+      height: 140px;
+      width: 1000px;
+}
+
+.bt_info{
+     margin-top: 5px ;
+      margin-left: 150px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1994;
+      height: 40px;
+      width: 600px;
+}
+
+.bt_zj{
+     margin-top: 5px ;
+      margin-left: 150px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1994;
+      height: 40px;
+      width: 600px;
+}
+.yd_xs{
+      margin-top: 5px ;
+      margin-left: 150px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1994;
+      height: 30px;
+      width: 600px;
+
+}
+
+.yd_zw{
+
+      margin-top: 5px ;
+      margin-left: 15px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1994;
+      height: 950px;
+      width: 1000px;
+}
+.yd_page{
+      margin-top: 15px ;
+      margin-left: 15px ;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #db1994;
+      height: 50px;
+      width: 1000px;
+}
+
+yd_left{	background-color:#eee; width:600px; height:40px; margin:0 auto;}
+ul{ list-style:none; }
+ul li{ float:left; font-size: 20px;  line-height:30px; text-align:center; margin-bottom:25px; position:relative;}
+a {text-decoration:none; color:#997e7e; display:block; padding:0 10px;}
+a:hover{ color: #3437fa; background-color: #9c9494;}
+ul li ul li{ float:none; background-color:#eee; margin-top:2px;}
+ul li ul{ position:absolute; left:0px; top:40px; display:none;}
+ul li ul li a:hover{ background-color:#06f;}
+ul li:hover ul{ display:block;}

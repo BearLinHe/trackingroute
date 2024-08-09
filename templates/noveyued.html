@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+     <link rel="stylesheet" type="text/css" href="{% static 'css/nvol_yd.css' %}">
+{% endblock %}
+
+{% block body %}
+    <div class="ydcenter">
+     <div class="yd_title">
+         <div class="xsmc">
+                 <p class="goodman" style="text-align: center;font-size: 60px;height: 80px ;  margin-top: 10px">
+             {{ name }}
+                  </p>
+         </div>
+
+{#         <p class="goodman" style="text-align: center;font-size: 60px;height: 80px ;  margin-top: 10px">#}
+{#             {{ name }}#}
+{#         </p>#}
+         <div class="xjpj">
+               <div  class="xjpj_list">
+                  <a style="background-image: url('/static/image/star.ico');width: 13px;height: 30px" href="{%  url 'xjpj' bookid 1 %}"></a>
+               </div>
+             <div  class="xjpj_list">
+                 <a style="background-image: url('/static/image/star.ico');width: 13px;height: 30px" href="{%  url 'xjpj' bookid 2 %}"></a>
+               </div>
+             <div  class="xjpj_list">
+                 <a style="background-image: url('/static/image/star.ico');width: 13px;height: 30px" href="{%  url 'xjpj' bookid 3 %}"></a>
+                </div>
+             <div  class="xjpj_list">
+              <a style="background-image: url('/static/image/star.ico');width: 13px;height: 30px" href="{%  url 'xjpj' bookid 4 %}"></a>
+                 </div>
+             <div  class="xjpj_list">
+                 <a style="background-image: url('/static/image/star.ico');width: 13px;height: 30px" href="{%  url 'xjpj' bookid 5 %}"></a>
+               </div>
+
+         </div>
+     </div>
+      <div class="yd_info">
+          <div class="yd_zj">
+              <ul >
+                  {% for i  in novel %}
+                   <li >
+                       <a style="font-size: 18px;width: 80px;margin-left: 0px;float: left;text-align: left;margin-top: 1px" href="{%  url 'novread' i.id 1 %}">阅读小说</a>
+                       <a style="font-size: 18px;width: 200px;margin-left: 2px;float: left;text-align: left;margin-top:1px " href='#'>{{i.zjtitle|truncatechars:13}}</a>
+                   </li>
+                  {% endfor %}
+
+              </ul>
+
+          </div>
+
+          <div class="nvo_info">
+               {%  for  nov  in list_nove %}
+              <div class="info_img">
+                      <img    src="{{ MEDIA_URL }}{{ nov.img}}" width="150px"  height="200px">
+              </div>
+              <div class="info_zw">
+                 <p style="margin-top: 1px;background: #d9e3ef; width: 470px;font-size: 19px">
+                 {{ nov.zjtitle|truncatechars:130}}
+             </p>
+              </div>
+              <div class="info_zzxx">
+                  <div class="zz">
+                        {{ nov.singer}}
+                  </div>
+                  <div class="fbrq">
+                       {{ nov.fbrq}}
+                  </div>
+                  <div class="nov_xz">
+                   <a href="{% url 'download' nov.bookid %}"  style="margin-top:1px;float: left;text-align: center;width: 40px " class="aButton">下载</a>
+                  </div>
+              </div>
+
+              <div class="info_plq">
+                   <form action="/purchase/comment/{{ nov.bookid}}/1/" method="post">
+                     {% csrf_token %}
+                        <label>
+                         <input  style="height: 70px;width:550px ;float: left" type="text"  name="comment">
+                        </label>
+                        <br>
+                        <br>
+                     <input style="float: left;margin-left: 15px;margin-top: 5px" type="submit" value="发布">
+                    </form>
+
+
+              </div>
+
+               <div class="info_plqlist">
+                    <table>
+                    <thead>
+
+                    <tbody>
+                    {% for i in comment %}
+                        <tr>
+                            <td width="400" >{{ i.username  }}</td>
+
+                            <td width="900">{{ i.name|truncatechars:12  }}</td>
+                            <td width="400">{{ i.plrq }}</td>
+                            <td width="700">{{ i.content|truncatechars:14 }}</td>
+                         </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+
+
+              </div>
+               {% for i in totle_page %}
+                            <a  style="width: 20px;float: left" href={% url 'comment'   nov.bookid i %}> {{ i }}</a>
+                 {% endfor %}
+           {% endfor %}
+
+          </div>
+
+
+{#          <div class="yd_zj">#}
+{#                  <a style="font-weight: normal;font-size:18px;background: #f4f7f8;font-family: 'Bell MT' ;text-align: center" href="#">#}
+{#                       第一百零八章 争锋天下休战 鸿钧第三次讲道#}
+{#                  </a>#}
+{#          </div>#}
+{##}
+{##}
+      </div>
+
+</div>
+{% endblock %}

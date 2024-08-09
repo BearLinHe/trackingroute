@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+     <link rel="stylesheet" type="text/css" href="{% static 'css/yd_info.css' %}">
+{% endblock %}
+
+{% block body %}
+ <div class="yd_info">
+     <div class="yd_left">
+      <ul>
+             {% for i  in list_nove %}
+                   <li >
+                       <a style="font-size: 18px;width: 30px;margin-left: 2px;float: left;text-align: left;margin-top: 1px" href="{%  url 'novread' i.id 1 %}">{{ i.id }}</a>
+                       <a style="font-size: 18px;width: 150px;margin-left: 15px;float: left;text-align: left;margin-top:1px " href='{%  url 'novread' i.id 1 %}'>{{i.zjtitle|truncatechars:14}}</a>
+                   </li>
+                  {% endfor %}
+      </ul>
+     </div>
+     <div class="yd_centter">
+       <div class="biaoti">
+            <div class="bt_info" style="background: #e1ecf1">
+                   <h2 style="text-align: center;margin-top: 2px">
+                 {{ name}}
+                   </h2>
+            </div>
+            <div class="bt_zj" style="background: #91b9ef">
+                  <h3 style="text-align: center;margin-top: 2px">
+                 {{ title}}
+                   </h3>
+                </div>
+           <div class="yd_xs" style="background: #eac0ca">
+               <h4 style="text-align: center;margin-top: 2px">
+                  您已经阅读到  {{ title}}  本章共有{{ zjnum }}字
+               </h4>
+           </div>
+       </div>
+       <div class="yd_zw">
+           <p style="font-family:verdana;font-size:120%;color:green;text-align: center ;margin-top: 5px">
+	            {{singer}}作品集 <!-- 使用 author 参数，网页上显示大标题：xx作品集 -->
+           </p> <!-- 居中 -->
+           </br> <!-- 空行 -->
+
+            {% for i in content %} <!-- 遍历文本内容 -->
+                  {{ i|truncatechars:800 }}
+
+            {% endfor %}
+
+
+
+       </div>
+         <div class="yd_page">
+
+             {% for i in totle_page %}
+                <a style="color: #fa2581; width: 10px;float: left;margin-left: 15px;text-align: center" href='{%  url 'novread'  id i%}'> {{ i }}</a>
+          {% endfor %}
+
+       </div>
+
+     </div>
+
+
+ </div>
+
+
+
+{% endblock %}

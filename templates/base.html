@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      {% load static %}
+          <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+         <link rel="stylesheet" type="text/css" href="{% static 'css/swiper.min.css' %}">
+         <script type="text/javascript" src="{% static 'js/swiper.min.js'%}"></script>
+      {% block link %}{% endblock %}
+
+
+
+</head>
+<body>
+<!-- 导航栏-->
+<div class="man">
+    <div class="navigation">
+         <div class="derc_left">
+             <a style="height: 100px" href="{% url 'index' %} ">
+                 <img style="margin-left: 20px;margin-top: 10px;height: 50px" src="{% static 'image/logo.png' %} " alt="logo">
+             </a>
+
+
+        </div>
+        <form action="/search/serch/" method="post">
+                       {% csrf_token %}
+                     <div class="derc_search">
+                     <div class="l_secrch"> <input class="l_text" value="{{search_text }}" name="search_text"></div>
+                     <div class="l_but"><input style="font-size: 20px" type="submit"  value="搜 索"/></div>
+                     </div>
+        </form>
+
+        <div class="derc_right">
+            <!--导航首页-->
+            <div class="right_dhsy">
+                <a  style="height: 25px;width: 110px ;margin-top: 2px;font-size: 20px" href="{% url 'index' %}" class="aButton">导航首页</a>
+            </div>
+            <div class="right_ph">
+                    <a  style="height: 25px;width: 110px ;margin-top: 2px;font-size: 20px"  href="{% url 'rank' 1 %}" class="aButton">小说排行</a>
+            </div>
+            <div class="right_grzx">
+                 <a style="height: 25px;width: 110px ;margin-top: 2px;font-size: 20px" href="{% url 'person' %}" class="aButton">个人中心</a>
+            </div>
+{#            <div class="info">#}
+{##}
+{#                1212#}
+{#              {% for message in messages %}#}
+{#                   {{ message }}#}
+{#                 {% endfor %}#}
+{#            </div>#}
+
+        </div>
+
+
+    </div>
+
+
+{% block body %}
+
+{% endblock %}
+ <!--底部栏-->
+ <div class="dqic">
+        <img  height="78px"  width="1380" style="margin-top: 2px" src="{% static 'image/bttonm.jpg' %} ">
+        <h1 class="bot"> 版权所有 XXXXXX@2023-07-27</h1>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>物流轨迹</title>
+    {% load static %}
+      <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/swiper.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/wlgj.css' %}">
+      <script type="text/javascript" src="{% static 'js/swiper.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'layui/layui.js'%}"></script>
+
+</head>
+<body>
+<div class="layui-form">
+  <form class="layui-form">
+    <div class="layui-form-item">
+      <div class="layui-inline">
+        <label class="layui-form-label">货物编号</label>
+        <div class="layui-input-inline">
+          <input type="text" id="query1" name="query1" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-inline">
+        <label class="layui-form-label">承运商编号</label>
+        <div class="layui-input-inline">
+          <input type="text" id="query2"  name="query2" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-inline">
+        <button class="layui-btn" lay-submit lay-filter="formDemo"   onclick="doSearch()">查询</button>
+
+
+      </div>
+    </div>
+  </form>
+    <div class="layui-card">
+    <div class="layui-card-body">
+        <table class="layui-table" id="table1" lay-filter="table1"></table>
+    </div>
+</div>
+
+<div class="layui-card">
+    <div class="layui-card-body">
+        <table class="my-table" id="table2" lay-filter="table2"></table>
+    </div>
+</div>
+
+    <script type="text/javascript">
+function doSearch() {
+  var hwbh = $('#query1').val();
+  var cysbh = $('#query2').val();
+  layui.use(['layer', 'form'], function(){
+    var layer = layui.layer
+    ,form = layui.form;
+    // 发起AJAX请求
+    $.ajax({
+      url: '/wlgj', // Django视图的URL
+      type: 'GET',
+      data: {
+        'query1': hwbh,
+        'query2': cysbh
+      },
+      success: function(data) {
+        // 假设返回的数据是JSON格式
+        layer.msg('搜索成功', {time: 1000});
+
+        // 更新页面的某个部分，比如表格
+        {#$('#search-results').html(data);#}
+      },
+      error: function() {
+        layer.msg('搜索失败', {time: 1000});
+      }
+    });
+  });
+}
+layui.use(['table', 'form'], function(){
+  var table = layui.table;
+
+  // 第一个表格
+  table.render({
+    elem: '#table1',
+    data: {{ table1_data|safe }},
+    cols: [[
+            {field: 'TP01', title: '货物编号',width:220,align:"center"},
+            {field: 'TP02', title: '承运商编号',width:220,align:"center"},
+            {field: 'TP03', title: '承运人名称',width:220,align:"center"},
+            {field: 'TP04', title: '拖车',width:220,align:"center"},
+            {field: 'TP05', title: '司机',width:220,align:"center"},
+            {field: 'TP06', title: '司机电话',width:220,align:"center"},
+    ]]
+  });
+
+  // 第二个表格
+  table.render({
+    elem: '#table2',
+    data: {{ table2_data|safe }},
+      limit:100000,
+      page: true, // 开启分页
+      event:true,
+    cols: [[
+        {field: 'LP04', title: '起点地址' ,width:400,align:"center"},
+        {field: 'LP05', title: '行驶速度',width:220,align:"center"},
+        {field: 'LP06', title: '行驶距离',width:220,align:"center"},
+        {field: 'LP07', title: '行驶用时',width:220,align:"center"},
+        {field: 'LP11', title: '抵达时间',width:220,align:"center"},
+        {field: 'LP10', title: '终点地址',width:400,align:"center"},
+    ]]
+  });
+
+});
+
+</script>
+
+
+{#    <table class="layui-hide" id="test"></table>#}
+{##}
+{#<script src="path/to/layui/layui.js"></script>#}
+{#<script>#}
+{#layui.use(['table', 'form'], function(){#}
+{#  var table = layui.table;#}
+{#  var form = layui.form;#}
+{##}
+{#  table.render({#}
+{#    elem: '#test'#}
+{#    ,url:'wlgj' // 你的数据接口URL#}
+{#    ,cols: [[#}
+{#      {field:'id', title: 'ID', width:80, sort: true, fixed: 'left'}#}
+{#      ,{field:'username', title: '用户名', width:80}#}
+{#      // ... 其他列定义#}
+{#    ]]#}
+{#    // ,... 其他表格参数#}
+{#  });#}
+{##}
+{#  form.on('submit(formDemo)', function(data){#}
+{#    // data.field 得到表单的所有字段，可以进行进一步处理，比如拼接成查询字符串发送到服务器#}
+{#    table.reload('test', {#}
+{#      where: { // 查询参数#}
+{#        query1: data.field.query1,#}
+{#        query2: data.field.query2#}
+{#        // ... 其他查询条件#}
+{#      }#}
+{#      // ,... 其他表格参数#}
+{#    });#}
+{#    return false; // 阻止表单提交#}
+{#  });#}
+{#});#}
+{#</script>#}
+
+</div>
+
+
+
+{##}
+{#         {% for i  in transport %}#}
+{#          {{ i.TP01}}#}
+{#          {{ i.TP02}}#}
+{#          {{ i.TP03}}#}
+{#         {% endfor %}#}
+{##}
+{##}
+{#          {% for i  in logtory %}#}
+{#          {{ i.LP01}}#}
+{#          {{ i.LP02}}#}
+{#          {{ i.LP03}}#}
+{#         {% endfor %}#}
+
+</body>
+</html>
